@@ -10,9 +10,12 @@ function reviewController() {
         let pageNumber = 0;
 
         const id = req.params.id;
-        const browser = await puppeteer.launch({ headless: false });
+        const browser = await puppeteer.launch({ headless: true });
         const page = await browser.newPage();
-        await page.setViewport({ width: 1920, height: 1080 });
+
+        // Uncomment if headles mode is false
+        // await page.setViewport({ width: 1920, height: 1080 });
+
         await page.setRequestInterception(true);
 
         // To make puppeteer browser not load css. It increases performance of puppeteer
